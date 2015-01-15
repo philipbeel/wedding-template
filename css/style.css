@@ -154,12 +154,16 @@ header {
 			margin: 10px 0;
 		}
 
-		.church-address {
+		.church-address, .reception-address {
 			font-family:"BebasNeueRegular", Helvetica, Tahoma, Arial;
 			text-shadow:0 1px 0 #FFFFFF;
 			font-size: 26px;
 			line-height: 28px;
+			padding: 20px;
+			background: #5B62B2;
 		}
+
+
 	/**  Location **/
 	.location {
 		width: 100%;
@@ -237,6 +241,10 @@ header {
 	background: url("../img/icon-church.png") no-repeat;
 }
 
+.timeline-rings {
+	background: url("../img/icon-rings.png") no-repeat;
+}
+
 .timeline-champagne {
 	background: url("../img/icon-breakfast.png") no-repeat;
 }
@@ -245,6 +253,25 @@ header {
 	background: url("../img/icon-meal.png") no-repeat;
 }
 
+.timeline-photography {
+	background: url("../img/icon-photography.png") no-repeat;
+}
+
+.timeline-cake {
+	background: url("../img/icon-cake.png") no-repeat;
+}
+
+.timeline-dj {
+	background: url("../img/icon-dj.png") no-repeat;
+}
+
+.timeline-disturb {
+	background: url("../img/icon-disturb.png") no-repeat;
+}
+
+.timeline-car {
+	background: url("../img/icon-car.png") no-repeat;
+}
 
 /* Media Queries */
 /** Landscape phone to portrait tablet **/
