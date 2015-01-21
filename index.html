@@ -12,14 +12,17 @@
 	<meta name="author" content="Philip Beel http://theodin.co.uk">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	
-	<!-- Fonts -->
 	<link rel="icon" type="image/x-icon" href="img/favicon.ico" />
-
+	
+	<!-- FONT -->
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400' rel='stylesheet' type='text/css'>
 	<!-- CSS -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
-	<link rel="stylesheet" href="css/buttons.min.css">
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/responsive.css">
+	<link rel="stylesheet" href="css/animation.css">
+
 
 	<script src="js/libs/modernizr-2.0.6.min.js"></script>
 
@@ -34,7 +37,7 @@
 					<li class="span2">
 						<a title="" href="#rsvp">
 							<span class="title">RSVP</span>
-							<span>Let us know your coming</span>
+							<span>Gift list and music choice</span>
 						</a>
 					</li>
 					<li class="span2">
@@ -44,7 +47,7 @@
 						</a>
 					</li>
 					<li class="logo span4">
-						<a title="" href="">
+						<a title="Phil and Jacqui's wedding" href="http://www.philandjacquigethitched.com">
 							Phil and Jacqui's wedding
 						</a>
 					</li>
@@ -57,7 +60,7 @@
 					<li class="span2">
 						<a title="" href="#location">
 							<span class="title">Location</span>
-							<span>Church and wedding venue</span>
+							<span>Church and reception details</span>
 						</a>
 					</li>
 				</ul>
@@ -68,8 +71,8 @@
 		
 		<section class="row">
 			<div class="span24 introduction">
-				<h1>Philip and Jacqui are getting married</h1>
-				<p>We are looking forward to seeing you on September 5th 2015.</p>
+				<h1>Phil and Jacqui are getting hitched</h1>
+				<p>We are looking forward to seeing you on September 5th 2015 for fun and celebrations.</p>
 			</div>  
 		</section>
 
@@ -77,27 +80,54 @@
 
 		<section class="row">
 			<a id="rsvp"></a>
-			<div class="span6 rsvp">
-				<h2>RSVP</h2>
-				<p>If you haven't already, please let us know you are coming on Septempber 5th 2015.</p>
+			<div class="span6">
+				<div class="rsvp card">
+					<h2>RSVP</h2>
+					<p>If you haven't already, please let us know you are coming on Septempber 5th 2015.</p>
+					<div class="validation-message" id="rsvp-validation"></div>
+					<div class="rsvp-result-message" id="rsvp-result-message"></div>
+					<div id="rsvp-loading" class="spinner">
+						<div class="bounce1"></div>
+						<div class="bounce2"></div>
+						<div class="bounce3"></div>
+					</div>
+	                <form name="" id="rsvp-form" method="get" action="dest">
+	                    <input type="text" class="text-field" name="rsvp-name" id="rsvp-name" placeholder="e.g. Philip Beel, Jacqui Keep" /><br />
+	                    
+	                    <select name="rsvp-attendance" id="rsvp-attendance">
+	                    	<option value="yes">Will be attending</option>
+	                    	<option value="no">Will not be attending</option>
+	                    </select><br />
 
-                <form name="" id="rsvp" method="get" action="#">
-                    <input type="text" class="text-field" id="name" placeholder="Guest name / names" /><br />
-                    
-                    <label><input type="radio" class="radio-field" name="rsvp" value="yes" checked> Will be attending</label>
-					<label><input type="radio" class="radio-field" name="rsvp" value="No"> Will NOT be attending</label>
+	                    <input type="submit" class="btn ladda-button" data-color="purple" value="SEND RSVP" />
 
-                    <input type="submit" class="btn ladda-button" data-color="purple" value="RSVP ME" />
-
-                </form>  
+	                </form>  					
+				</div>
 			</div>
 
-			<div class="span3 church-address">
-				<span>Saint Peter &amp; Saint Pauls Church <br />Saltwood <br />Rectory Lane <br />Hythe <br />Kent <br />CT21 4QA</span>
+			<div class="span3">
+				<div class="gift-ideas card">
+					<span>Gift list:</span><br />
+					<span class="normal">Your presence at our wedding is gift enough, but if you do wish to buy us something, a contribution towards our honeymoon would be lovely.</span>	
+				</div>
 			</div>
 
-			<div class="span3 reception-address">
-				<span>Saint Peter &amp; Saint Pauls Church <br />Saltwood <br />Rectory Lane <br />Hythe <br />Kent <br />CT21 4QA</span>
+			<div class="span3">
+				<div class="dj-suggestions card">
+					<span>The playlist:</span><br />
+					<span class="normal">Let us know your favourite song for the night and we will try to get it played:</span>	
+					<div class="song-result-message" id="song-result-message"></div>
+					<div id="song-loading" class="spinner">
+						<div class="bounce1"></div>
+						<div class="bounce2"></div>
+						<div class="bounce3"></div>
+					</div>
+					<form name="music" class="dj-form" id="dj-form" method="get" action="#">
+						<input type="text" class="text-field" name="song-choice" id="song-choice" placeholder="e.g. Sade, by your side" /><br />
+						<input type="submit" class="btn ladda-button" data-color="green" value="SEND" />
+					</form>  					
+
+				</div>
 			</div>
 
 		</section>
@@ -126,18 +156,13 @@
 						<h4>Church service</h4>
 						<hr/>
 						<div class="timeline-chruch timeline-icon">
-							<p>Day guests to arrive at the church for 1:30pm. The service will commence at 2:00pm shrarp</p>
+							<p>Day guests to arrive at the church for 1:30pm. The service will commence at 2:00pm shrarp, unless Jacqui decides to make Phil sweat!</p>
 							<p class="note"> - 1:30pm</p>
 						</div>
 					</div>
 					<div class="clearfix"></div>
 
 				</div>
-
-				<div class="clearfix"></div>
-
-				<!-- timeline spacer -->
-				<div class="timeline-spacer"></div>
 						
 				<!-- Entry in time line, on left -->
 				<div class="timeline-row timeline-row-left">
@@ -146,7 +171,7 @@
 						<h4>I DO</h4>
 						<hr/>
 						<div class="timeline-rings timeline-icon">
-							<p>The important bit..</p>
+							<p>The important bit... we are to be married by Revd. Canon Steve Coneys.</p>
 							<p class="note">- 2:00pm</p>
 						</div>
 					</div>
@@ -155,26 +180,19 @@
 
 				</div>
 
-				<div class="clearfix"></div>
-
-				<div class="timeline-row-first timeline-row timeline-row-right">
+				<div class="timeline-row timeline-row-right">
 
 					<div class="timeline-entry timeline-entry-right">
-						<h4>Speeches and food</h4>
+						<h4>Wedding Breakfast</h4>
 						<hr/>
 						<div class="timeline-meal timeline-icon">
-							<p>Daytime guests will be served a buffet, followed by speeches</p>
+							<p>A yummy buffet of food for everyone to tuck into, followed by some wonderful speeches (we hope - no pressure!)</p>
 							<p class="note">- 4:00pm</p>
 						</div>
 					</div>
 					<div class="clearfix"></div>
 
 				</div>
-
-				<div class="clearfix"></div>
-
-				<!-- timeline spacer -->
-				<div class="timeline-spacer"></div>
 						
 				<!-- Entry in time line, on left -->
 				<div class="timeline-row timeline-row-left">
@@ -184,7 +202,7 @@
 						<hr/>
 						<div class="timeline-photography timeline-icon">
 							<p>Ready to party the night away. There will be music... and dancing.
-							 IT'S A CASH BAR.....
+							 IT'S A CASH BAR ONLY!!!
 							</p>
 							<p class="note">- 7:00pm</p>
 						</div>
@@ -193,11 +211,6 @@
 					<div class="clearfix"></div>
 
 				</div>
-
-				<div class="clearfix"></div>
-
-				<!-- timeline spacer -->
-				<div class="timeline-spacer"></div>
 				
 				<!-- Entry in time line, on right -->
 				<div class="timeline-row timeline-row-right">
@@ -206,7 +219,7 @@
 						<h4>Cutting of the cake</h4>
 						<hr/>
 						<div class="timeline-cake timeline-icon">
-							<p>Jacqui will think of something witty here...</p>
+							<p>Ready so we can eat more food and drink more wine.</p>
 							<p class="note">- 7:30pm</p>
 						</div>
 					</div>
@@ -215,8 +228,6 @@
 
 				</div>
 
-				<div class="clearfix"></div>
-
 				<!-- Entry in time line, on left -->
 				<div class="timeline-row timeline-row-left">
 
@@ -224,7 +235,7 @@
 						<h4>First Dance</h4>
 						<hr/>
 						<div class="timeline-dj timeline-icon">
-							<p>We have quite a treat in store.</p>
+							<p>We have a real treat in store for all you Sade fans...</p>
 							<p class="note">- 7:45pm</p>
 						</div>
 					</div>
@@ -237,10 +248,10 @@
 				<div class="timeline-row timeline-row-right">
 
 					<div class="timeline-entry timeline-entry-right">
-						<h4>Say Farewell to the bride and groom</h4>
+						<h4>Say Farewell</h4>
 						<hr/>
 						<div class="timeline-disturb timeline-icon">
-							<p></p>
+							<p>... to the bride and groom, but you still have time for one last boogie.</p>
 							<p class="note">- 10:30pm</p>
 						</div>
 					</div>
@@ -256,13 +267,13 @@
 						<h4>Carriages</h4>
 						<hr/>
 						<div class="timeline-car timeline-icon">
-							<p>Thanks for leaving quietly. The disco will finish at 11, all guests to leav by 11:30pm</p>
+							<p>A wonderful day, thanks for coming. The disco will finish at 11, all guests to leave by 11:30pm. Please respect the neighbours and leave quietly.</p>
 							<p class="note">- 11:30pm</p>
 						</div>
 					</div>
-
+					
 					<div class="clearfix"></div>
-
+				
 				</div>
 
 			</div>
@@ -280,42 +291,57 @@
 
 		<div class="clear"><hr /></div>
 
-		<section class="row">
+		<section>
 			<a id="hotels"></a>
-			<div class="span24 hotels">
-				<h2>Hotels &amp; accomodation</h2>
-				<p>There are plenty of hotels to choose from, here are a few options to take a look at.</p>
-				<div>
-					<h3>Castle Hotel</h3>
-					<p><strong>Address:</strong>The Green, Hythe, Hythe, Kent CT21 4AJ</p>
-					<p><strong>Phone:</strong>01303 266311</p>
-					<p><strong>Website:</strong><a href="http://www.castlehotel-saltwood.co.uk/">http://www.castlehotel-saltwood.co.uk/</a></p>
-					<p><strong>Distance from venue:</strong>250 ft </p>
+			<div class="row">
+				<div class="span12 hotels">
+					<h2>Hotels &amp; accomodation</h2>
+					<p>There are plenty of hotels and B&amp;Bs around Saltwood and Hythe to choose from, but we have picked a selection below for you to take a look at.</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="span6">
+					<div class="hotel-odd">
+						<h3>Castle Hotel</h3>
+						<p><strong>Address: </strong> The Green, Hythe, Kent CT21 4AJ</p>
+						<p><strong>Phone: </strong>01303 266311</p>
+						<p><strong>Website: </strong><a target="_blank" href="http://www.castlehotel-saltwood.co.uk/">www.castlehotel.co.uk/</a></p>
+						<p><strong>Distance from venue: </strong>250 ft </p>	
+					</div>
 				</div>
 
-				<div>
-					<h3>Hythe Imperial</h3>
-					<p><strong>2 night minimum stay</strong></p>
-					<p><strong>Address:</strong>Princes Parade, Hythe, Kent CT21 6AE</p>
-					<p><strong>Phone:</strong>01303 267441</p>
-					<p><strong>Website:</strong><a href="http://www.mercure.com/gb/hotel-6862-mercure-hythe-imperial-hotel-spa/index.shtml">http://www.hytheimperail.com/</a></p>
-					<p><strong>Distance from venue:</strong>1.6 miles</p>
+				<div class="span6">
+					<div class="hotel-even">
+						<h3>Hythe Imperial</h3>
+						<p><strong>2 night minimum stay*</strong></p>
+						<p><strong>Address: </strong> Princes Parade, Hythe, Kent CT21 6AE</p>
+						<p><strong>Phone: </strong>01303 267441</p>
+						<p><strong>Website: </strong><a target="_blank" href="http://www.mercure.com/gb/hotel-6862-mercure-hythe-imperial-hotel-spa/index.shtml">www.hytheimperail.com/</a></p>
+						<p><strong>Distance from venue: </strong>1.6 miles</p>
+					</div>	
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="span6">
+					<div class="hotel-even">
+						<h3>The Old Post Office Guest House</h3>
+						<p><strong>Address: </strong> 5 High Street, Hythe, Kent CT21 5AB</p>
+						<p><strong>Phone: </strong>01303 230828</p>
+						<p><strong>Website: </strong><a target="_blank" href="http://www.oldpostofficeguesthousehythe.co.uk/">www.poguesthouse.co.uk/</a></p>
+						<p><strong>Distance from venue: </strong>1 miles</p>
+					</div>
 				</div>
 
-				<div>
-					<h3>The Old Post Office Guest House</h3>
-					<p><strong>Address:</strong>5 High Street, Hythe, Kent CT21 5AB</p>
-					<p><strong>Phone:</strong>01303 230828</p>
-					<p><strong>Website:</strong><a href="http://www.oldpostofficeguesthousehythe.co.uk/">http://www.oldpostofficeguesthousehythe.co.uk/</a></p>
-					<p><strong>Distance from venue:</strong>1 miles</p>
-				</div>
-
-				<div>
-					<h3>Holiday Inn Express Folkestone</h3>
-					<p><strong>Address:</strong>Cheriton Park, Cheriton High Street, Folkestone CT18 8AN</p>
-					<p><strong>Phone:</strong>01303 298450</p>
-					<p><strong>Website:</strong><a href="http://www.ihg.com/holidayinnexpress/hotels/gb/en/folkestone/lyxfx/hoteldetail?cm_mmc=GoogleMaps-_-ex-_-GBEN-_-lyxfx">http://www.ihg.com/holidayinnexpress/</a></p>
-					<p><strong>Distance from venue:</strong>3.2 miles</p>
+				<div class="span6">
+					<div class="hotel-odd">
+						<h3>Holiday Inn Express Folkestone</h3>
+						<p><strong>Address: </strong> Cheriton Park, Cheriton High Street, Folkestone CT18 8AN</p>
+						<p><strong>Phone: </strong>01303 298450</p>
+						<p><strong>Website: </strong><a target="_blank" href="http://www.ihg.com/holidayinnexpress/hotels/gb/en/folkestone/lyxfx/hoteldetail?cm_mmc=GoogleMaps-_-ex-_-GBEN-_-lyxfx">www.ihg.com/</a></p>
+						<p><strong>Distance from venue: </strong>3.2 miles</p>
+					</div>
 				</div>
 			</div>  
 		</section>
@@ -324,16 +350,46 @@
 
 		<section class="row">
 			<a id="location"></a>
-			<div class="span24 location">
+			<div class="span12 location">
 				<h2>Location</h2>
-				<p>Check the map for more information on the church and the venue.</p>
+				<p>Check the map for more information on the church and reception.</p>
 
 				<div id="map"></div>
-			</div>  
+			</div>
+
+		</section>
+
+		<div class="row">
+			<div class="span6 address">
+				<div class="church-address card">
+					<span>service:</span><br />
+					<span>Saint Peter &amp; Saint Pauls Church <br />Saltwood <br />Rectory Lane <br />Hythe <br />Kent <br />CT21 4QA</span>	
+				</div>
+			</div>
+
+			<div class="span6 address">
+				<div class="reception-address card">
+					<span>reception:</span><br />
+					<span>Saltwood Village Hall <br />Rectory Lane <br />Saltwood <br />Hythe <br />Kent <br />CT21 4PZ</span>	
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="span12  card">
+				<div class="parking">
+					<h3>Parking</h3>
+					<p>Limited parking is available at the church, with no on-site parking at the reception venue. It is a small village so you can park anywhere near, however please be respectful to the neighbours. Thanks.</p>
+				</div>
+			</div>
+		</div>
+
 		</section>
 
 		<div class="clear"><hr /></div>
-
+		<section class="footer">
+			<div class="footnote"></div>
+		</section>
 	</div>
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -346,5 +402,4 @@
 	<script defer src="js/script.js"></script>
 
 </body>
-
 </html>

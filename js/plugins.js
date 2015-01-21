@@ -13,7 +13,7 @@ $("#map").gMap({
 			html: "<strong>Saint Peter & Saint Pauls Church</strong> <br />Saltwood <br />Rectory Lane <br />Hythe <br />Kent <br />CT21 4QA",
 			icon: 
 			{
-				image: "img/map-pin.png",
+				image: "img/map-pin-church.png",
 				iconsize: [26, 46],
 				iconanchor: [12,46],
 				infowindowanchor: [13, 0] 
@@ -31,5 +31,5 @@ $("#map").gMap({
 				infowindowanchor: [13, 0] 
 			}
 		}],
-		zoom: 15 
+		zoom: 13 
 	});
